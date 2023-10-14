@@ -8,6 +8,8 @@ import "../../contracts/GasToken.sol";
 import {console} from "forge-std/console.sol";
 
 contract GasTokenTest is Test {
+    event Approval(address owner, address spender, uint256 amount);
+    event Transfer(address sender, address recipient, uint256 amount);
     GasToken public gasToken;
 
     address public constant WETH = 0x82aF49447D8a07e3bd95BD0d56f35241523fBab1; // wrapped ETH
@@ -53,14 +55,16 @@ contract GasTokenTest is Test {
     }
 
     function test_transfer_TransferTokens() public {
+        vm.expectEmit(true, true, true, true);
+        emit Transfer(address(this), alice, 10 ether);
         gasToken.transfer(alice, 10 ether);
         uint256 balanceAliceAfter = gasToken.balanceOf(alice);
         uint256 earningFactorAlice = gasToken.getSnapshot(alice);
         uint256 earningFactor = gasToken.getEarningFactor();
         console.log("Tx 1");
-        emit log_uint(balanceAliceAfter);
-        emit log_uint(earningFactorAlice);
-        emit log_uint(earningFactor);
+        assertGt(balanceAliceAfter, 10 ether);
+        assertEq(earningFactorAlice, 1 ether);
+        assertGt(earningFactor, 1 ether);
         gasToken.transfer(bob, 100 ether);
         uint256 balanceBobAfter = gasToken.balanceOf(bob);
         balanceAliceAfter = gasToken.balanceOf(alice);
@@ -100,7 +104,15 @@ contract GasTokenTest is Test {
     }
 
     function test_transferFrom_Success() public {
-
+        vm.expectEmit(true, true, true, true);
+        emit Approval(address(this), alice, 10 ether);
+        gasToken.approve(alice, 10 ether);
+        vm.prank(alice);
+        // vm.expectEmit(true, true, true, true);
+        // emit Transfer(address(this), alice, 10 ether);
+        // vm.expectEmit(true, true, true, true);
+        // emit Approval(address(this), alice, 0);
+        gasToken.transferFrom(address(this), alice, 10 ether);
     }
 
     function test_transferFrom_Reflection_Success() public {
@@ -120,7 +132,7 @@ contract GasTokenTest is Test {
     }
 
     function test_excludeAccount_Success() public {
-        
+
     }
 
     function test_transfer_Reflection() public {
