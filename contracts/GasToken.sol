@@ -271,9 +271,7 @@ contract GasToken is IGasToken, Ownable {
         uint256 balance = _balances[addr];
         GasLib.uq112x112 memory lastEarningFactor = _snapshots[addr];
         if (lastEarningFactor._x == 0) return balance;
-        console.log("balance");
         if (lastEarningFactor._x == _earningFactor._x) return balance;
-        console.log("c");
         GasLib.uq112x112 memory newEarningFactor = GasLib.divuq(
             _earningFactor,
             lastEarningFactor

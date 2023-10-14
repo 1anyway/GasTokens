@@ -99,6 +99,30 @@ contract GasTokenTest is Test {
         emit log_uint(earningFactor);
     }
 
+    function test_transferFrom_Success() public {
+
+    }
+
+    function test_transferFrom_Reflection_Success() public {
+
+    }
+
+    function test_increaseAllowance_Success() public {
+
+    }
+
+    function test_decreaseAllowance_Success() public {
+
+    }
+
+    function test_includeAccount_Success() public {
+
+    }
+
+    function test_excludeAccount_Success() public {
+        
+    }
+
     function test_transfer_Reflection() public {
         gasToken.transfer(treasury, 11573 ether);
         vm.startPrank(treasury);
