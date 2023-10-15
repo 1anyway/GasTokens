@@ -20,5 +20,5 @@ Frictionless收益：用户获得的收益是无摩擦的，意味着他们可�
 **6 本项目在这次黑客松的目标:**
 
 目标：
-1. 
-2. 
+1. 使用solidity智能合约实现reflection核心算法  
+2. 以ERC20 token(GasToken)为例实现该算法的应用
