@@ -29,7 +29,7 @@ contract GasTokenTest is Test {
     address internal staking;
 
     function setUp() public {
-        ethereumFork = vm.createSelectFork(ETHEREUM_RPC_URL, BLOCK_NUM);
+        // ethereumFork = vm.createSelectFork(ETHEREUM_RPC_URL, BLOCK_NUM);
 
         utils = new Utils();
         users = utils.createUsers(7);
@@ -63,39 +63,40 @@ contract GasTokenTest is Test {
         uint256 balanceBobBefore = gasToken.balanceOf(bob);
         uint256 balanceCharlieBefore = gasToken.balanceOf(charlie);
         console.log("action 0");
-        emit log_uint(balanceAliceBefore);
-        emit log_uint(balanceBobBefore);
-        emit log_uint(balanceCharlieBefore);
+        emit log_named_uint("action 0 alice balance  ",balanceAliceBefore);
+        emit log_named_uint("action 0 bob balance    ", balanceBobBefore);
+        emit log_named_uint("action 0 charlie balance", balanceCharlieBefore);
         vm.prank(charlie);
         console.log("action 1");
         gasToken.transfer(alice, 1000 ether);
         uint256 balanceAliceAfter = gasToken.balanceOf(alice);
         uint256 balanceBobAfter = gasToken.balanceOf(bob);
         uint256 balanceCharlieAfter = gasToken.balanceOf(charlie);
-        emit log_uint(balanceAliceAfter);
-        emit log_uint(balanceBobAfter);
-        emit log_uint(balanceCharlieAfter);
+        emit log_named_uint("action 1 alice balance  ", balanceAliceAfter);
+        emit log_named_uint("action 1 bob balance    ", balanceBobAfter);
+        emit log_named_uint("action 1 charlie balance", balanceCharlieAfter);
         vm.prank(bob);
         console.log("action 2");
         gasToken.transfer(alice, 2000 ether);
         uint256 balanceAliceAfter2 = gasToken.balanceOf(alice);
         uint256 balanceBobAfter2 = gasToken.balanceOf(bob);
         uint256 balanceCharlieAfter2 = gasToken.balanceOf(charlie);
-        emit log_uint(balanceAliceAfter2);
-        emit log_uint(balanceBobAfter2);
-        emit log_uint(balanceCharlieAfter2);
+        emit log_named_uint("action 2 alice balance  ", balanceAliceAfter2);
+        emit log_named_uint("action 2 bob balance    ", balanceBobAfter2);
+        emit log_named_uint("action 2 charlie balance", balanceCharlieAfter2);
         vm.prank(alice);
         console.log("action 3");
         gasToken.transfer(charlie, 3000 ether);
         uint256 balanceAliceAfter3 = gasToken.balanceOf(alice);
         uint256 balanceBobAfter3 = gasToken.balanceOf(bob);
         uint256 balanceCharlieAfter3 = gasToken.balanceOf(charlie);
-        emit log_uint(balanceAliceAfter3);
-        emit log_uint(balanceBobAfter3);
-        emit log_uint(balanceCharlieAfter3);
+        emit log_named_uint("action 3 alice balance  ", balanceAliceAfter3);
+        emit log_named_uint("action 3 bob balance    ", balanceBobAfter3);
+        emit log_named_uint("action 3 charlie balance", balanceCharlieAfter3);
     }
 
     function test_transfer_ReflectionPresent() public {
+        console.log("===============example2=================");
         gasToken.excludeAccount(address(this));
         gasToken.transfer(alice, 10000 ether);
         gasToken.transfer(bob, 20000 ether);
@@ -106,10 +107,10 @@ contract GasTokenTest is Test {
         uint256 balanceCharlieBefore = gasToken.balanceOf(charlie);
         uint256 balanceDennisBefore = gasToken.balanceOf(dennis);
         console.log("action 0");
-        emit log_uint(balanceAliceBefore);
-        emit log_uint(balanceBobBefore);
-        emit log_uint(balanceCharlieBefore);
-        emit log_uint(balanceDennisBefore);
+        emit log_named_uint("action 0 alice balance", balanceAliceBefore);
+        emit log_named_uint("action 0 bob balance", balanceBobBefore);
+        emit log_named_uint("action 0 charlie balance", balanceCharlieBefore);
+        emit log_named_uint("action 0 dennis balance", balanceDennisBefore);
         vm.prank(charlie);
         console.log("action 1");
         gasToken.transfer(alice, 1000 ether);
@@ -117,10 +118,10 @@ contract GasTokenTest is Test {
         uint256 balanceBobAfter = gasToken.balanceOf(bob);
         uint256 balanceCharlieAfter = gasToken.balanceOf(charlie);
         uint256 balanceDennisAfter = gasToken.balanceOf(dennis);
-        emit log_uint(balanceAliceAfter);
-        emit log_uint(balanceBobAfter);
-        emit log_uint(balanceCharlieAfter);
-        emit log_uint(balanceDennisAfter);
+        emit log_named_uint("action 1 alice balance  ", balanceAliceAfter);
+        emit log_named_uint("action 1 bob balance    ", balanceBobAfter);
+        emit log_named_uint("action 1 charlie balance", balanceCharlieAfter);
+        emit log_named_uint("action 1 dennis balance ", balanceDennisAfter);
         vm.prank(bob);
         console.log("action 2");
         gasToken.transfer(alice, 2000 ether);
@@ -128,10 +129,10 @@ contract GasTokenTest is Test {
         uint256 balanceBobAfter2 = gasToken.balanceOf(bob);
         uint256 balanceCharlieAfter2 = gasToken.balanceOf(charlie);
         uint256 balanceDennisAfter2 = gasToken.balanceOf(dennis);
-        emit log_uint(balanceAliceAfter2);
-        emit log_uint(balanceBobAfter2);
-        emit log_uint(balanceCharlieAfter2);
-        emit log_uint(balanceDennisAfter2);
+        emit log_named_uint("action 2 alice balance  ", balanceAliceAfter2);
+        emit log_named_uint("action 2 bob balance    ", balanceBobAfter2);
+        emit log_named_uint("action 2 charlie balance", balanceCharlieAfter2);
+        emit log_named_uint("action 2 dennis balance ", balanceDennisAfter2);
         gasToken.excludeAccount(dennis);
         vm.prank(alice);
         console.log("action 3");
@@ -140,10 +141,10 @@ contract GasTokenTest is Test {
         uint256 balanceBobAfter3 = gasToken.balanceOf(bob);
         uint256 balanceCharlieAfter3 = gasToken.balanceOf(charlie);
         uint256 balanceDennisAfter3 = gasToken.balanceOf(dennis);
-        emit log_uint(balanceAliceAfter3);
-        emit log_uint(balanceBobAfter3);
-        emit log_uint(balanceCharlieAfter3);
-        emit log_uint(balanceDennisAfter3);
+        emit log_named_uint("action 3 alice balance  ", balanceAliceAfter3);
+        emit log_named_uint("action 3 bob balance    ", balanceBobAfter3);
+        emit log_named_uint("action 3 charlie balance", balanceCharlieAfter3);
+        emit log_named_uint("action 3 dennis balance ", balanceDennisAfter3);
         vm.prank(alice);
         console.log("action 4");
         gasToken.transfer(charlie, 1000 ether);
@@ -151,10 +152,10 @@ contract GasTokenTest is Test {
         uint256 balanceBobAfter4 = gasToken.balanceOf(bob);
         uint256 balanceCharlieAfter4 = gasToken.balanceOf(charlie);
         uint256 balanceDennisAfter4 = gasToken.balanceOf(dennis);
-        emit log_uint(balanceAliceAfter4);
-        emit log_uint(balanceBobAfter4);
-        emit log_uint(balanceCharlieAfter4);
-        emit log_uint(balanceDennisAfter4);
+        emit log_named_uint("action 4 alice balance  ", balanceAliceAfter4);
+        emit log_named_uint("action 4 bob balance    ", balanceBobAfter4);
+        emit log_named_uint("action 4 charlie balance", balanceCharlieAfter4);
+        emit log_named_uint("action 4 dennis balance ", balanceDennisAfter4);
     }
 
     function test_transfer_TransferTokens() public {

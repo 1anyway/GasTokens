@@ -1250,8 +1250,8 @@
       }
     },
     "test/foundry/GasToken.t.sol": {
-      "lastModificationDate": 1697356228770,
-      "contentHash": "6a44713eb374c5cdf58e932c4ed00d31",
+      "lastModificationDate": 1697373483320,
+      "contentHash": "8e85ccc6d4981baf07bb0d70e4d49e86",
       "sourceName": "test/foundry/GasToken.t.sol",
       "solcConfig": {
         "settings": {
