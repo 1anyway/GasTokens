@@ -15,7 +15,7 @@ Frictionless收益：用户获得的收益是无摩擦的，意味着他们可�
 
 **5 队长和队员**: 
 
-队长: [Joe](https://github.com/1anyway) <a href="mailto:zhouzhe194@gmail.com">zhouzhe194@gmail.com</a>
+队长: [Joe](https://github.com/1anyway)&nbsp&nbsp&nbsp<a href="mailto:zhouzhe194@gmail.com">zhouzhe194@gmail.com</a>
 
 **6 本项目在这次黑客松的目标:**
 
