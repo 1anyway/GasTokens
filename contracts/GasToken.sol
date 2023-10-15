@@ -21,7 +21,7 @@ contract GasToken is IGasToken, Ownable {
 
     string private _name = "GasToken";
     string private _symbol = "GAS";
-    uint256 private _totalSupply = 1_000_000_000 * 10 ** 18;
+    uint256 private _totalSupply = 60000 * 10 ** 18;
 
     uint256 private _effectiveTotal;
 
@@ -68,7 +68,7 @@ contract GasToken is IGasToken, Ownable {
 
     function balanceOf(
         address account
-    ) external view override returns (uint256) {
+    ) public view override returns (uint256) {
         if (_isExcluded.contains(account)) return _balances[account];
         return _getEffectiveBalance(account);
     }
@@ -86,11 +86,8 @@ contract GasToken is IGasToken, Ownable {
         address recipient,
         uint256 amount
     ) external override returns (bool) {
+        _spendAllowance(sender, _msgSender(), amount);
         _transfer(sender, recipient, amount);
-
-        uint256 currentAllowance = _allowances[sender][_msgSender()];
-        _approve(sender, _msgSender(), currentAllowance - amount);
-
         return true;
     }
 
@@ -200,7 +197,7 @@ contract GasToken is IGasToken, Ownable {
         require(recipient != address(0), "ERC20: transfer to address(0)");
 
         bool taxless = _checkTaxless(sender, recipient);
-        uint256 fromBalance = _getEffectiveBalance(sender);
+        uint256 fromBalance = balanceOf(sender);
         require(
             fromBalance >= amount,
             "ERC20: transfer amount exceeds balance"
@@ -210,7 +207,7 @@ contract GasToken is IGasToken, Ownable {
         // 1. with tax
         // 2. without tax
         if (taxless) {
-            _balances[recipient] = _getEffectiveBalance(recipient) + amount;
+            _balances[recipient] = balanceOf(recipient) + amount;
         } else {
             _balances[recipient] =
                 _getEffectiveBalance(recipient) +
