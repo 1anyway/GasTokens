@@ -15,10 +15,31 @@ Frictionless收益：用户获得的收益是无摩擦的，意味着他们可�
 
 **5 队长和队员**: 
 
-队长: [Joe](https://github.com/1anyway)&nbsp&nbsp&nbsp<a href="mailto:zhouzhe194@gmail.com">zhouzhe194@gmail.com</a>
+队长: [Joe](https://github.com/1anyway)&nbsp;&nbsp;&nbsp;<a href="mailto:zhouzhe194@gmail.com">zhouzhe194@gmail.com</a>
 
 **6 本项目在这次黑客松的目标:**
 
 目标：
 1. 使用solidity智能合约实现reflection核心算法  
 2. 以ERC20 token(GasToken)为例实现该算法的应用
+
+**7 黑客松前两日的进度**
+Day0:  
+
+  
+Day1:  
+  
+
+
+**8 视频链接:**
+
+**9 项目 github repo 链接:**   
+
+所有代码都在  
+
+https://github.com/1anyway/GasTokens  
+
+**10 是否基于之前的项目:**  
+
+该项目是本次hackathon期间，从0到1开发的项目，完全原创。
+
