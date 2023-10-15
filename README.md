@@ -1,7 +1,7 @@
 # GasTokens
 **1 项目名称**: GasToken
 
-**2 所选赛道**: Layer2 application
+**2 所选赛道**: Layer2 Application
 
 **3 项目图片**:
 
