@@ -133,7 +133,7 @@ contract GasToken is IGasToken, Ownable {
         require(_isExcluded.contains(account), "Already included");
         _isExcluded.remove(account);
         _snapshots[account] = _earningFactor;
-        _effectiveTotal += _getEffectiveBalance(account); // TODO: check, before or after snapshot?
+        _effectiveTotal += _getEffectiveBalance(account);
     }
 
     function excludeAccount(address account) public override onlyOwner {

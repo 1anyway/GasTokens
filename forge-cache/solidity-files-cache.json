@@ -13,8 +13,8 @@
   },
   "files": {
     "contracts/GasToken.sol": {
-      "lastModificationDate": 1697274452417,
-      "contentHash": "479a08b22e747de7c6b9abeecd5f193a",
+      "lastModificationDate": 1697285192878,
+      "contentHash": "93241ebaffbd7203b7b2da28fe3a27c1",
       "sourceName": "contracts/GasToken.sol",
       "solcConfig": {
         "settings": {
@@ -1250,8 +1250,8 @@
       }
     },
     "test/foundry/GasToken.t.sol": {
-      "lastModificationDate": 1697283865084,
-      "contentHash": "b30f2e08614f6f2a022934e19eb681cf",
+      "lastModificationDate": 1697343010130,
+      "contentHash": "8221c7a5274058c43bd1f1c8636d6023",
       "sourceName": "test/foundry/GasToken.t.sol",
       "solcConfig": {
         "settings": {
