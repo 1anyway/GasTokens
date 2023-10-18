@@ -8,11 +8,6 @@ import "./interfaces/IGasToken.sol";
 import "./libs/GasLib.sol";
 import {console} from "forge-std/console.sol";
 
-// ERC20Mintable
-// ERC20Burnable
-// ERC20Taxable
-// ERC20Redistributable
-
 contract GasToken is IGasToken, Ownable {
     using EnumerableSet for EnumerableSet.AddressSet;
 
@@ -39,12 +34,6 @@ contract GasToken is IGasToken, Ownable {
         _effectiveTotal = _totalSupply;
         _earningFactor = GasLib.fraction(1, 1);
     }
-
-    // uq112x112 x = GasLib.fraction(37, 13); // 37 / 13
-    // uq112x112 y = GasLib.fraction(91, 23); // 91 / 23
-    // uq112x112 z1 = GasLib.muluq(x, y); // 37 * 91 / (13 * 23)
-    // uq112x112 z2 = GasLib.divuq(x, y); // (37 / 13) / (91 / 23)
-    // uint256 z3 = GasLib.mulu(z1, 10 ** 18); // 37 * 91 / (13 * 23) * 10 ** 18
 
     function name() external view returns (string memory) {
         return _name;
